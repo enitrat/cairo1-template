@@ -2,6 +2,7 @@
 
 .PHONY: compile
 SOURCE_FOLDER=./src
+last_folder=$(basename $(dirname $(dir)))
 
 install:
 	git submodule init && git submodule update
@@ -13,7 +14,7 @@ build:
 	cargo build
 
 test:
-	cargo run --bin cairo-test -- --starknet --path $(SOURCE_FOLDER)
+	cargo run --bin cairo-test -- --starknet --path $(dir)
 
 format:
 	cargo run --bin cairo-format -- --recursive $(SOURCE_FOLDER) --print-parsing-errors
@@ -21,11 +22,6 @@ format:
 check-format:
 	cargo run --bin cairo-format -- --check --recursive $(SOURCE_FOLDER)
 
-compile:
+starknet-compile:
 	mkdir -p out && \
-	for file in src/*.cairo; do \
-	  filename=$$(basename -- "$$file"); \
-	  extension="$${filename##*.}"; \
-	  filename="$${filename%.*}"; \
-	  cargo run --bin starknet-compile -- "$$file" "out/$${filename}.json"; \
-	done
+	  cargo run --bin starknet-compile -- ${dir} out/$(shell basename $(dir)).json
