@@ -1,2 +1,2 @@
 mod storage;
-use storage::Storage;
+use storage::Vault;

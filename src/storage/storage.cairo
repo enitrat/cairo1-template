@@ -1,10 +1,12 @@
 #[contract]
-mod Storage {
-    use starknet::get_caller_address;
-
+mod Vault {
     struct Storage {
-        balance: felt, 
+        balance: felt,
+        mapping: LegacyMap::<felt, u256>
     }
+
+    #[event]
+    fn Update(balances: felt) {}
 
     #[constructor]
     fn constructor() {
@@ -16,7 +18,8 @@ mod Storage {
     fn increase_balance(amount: felt) {
         assert(amount != 0, 'Amount must be positive');
         let res = balance::read();
-        balance::write(res + amount)
+        balance::write(res + amount);
+        Update(res + amount)
     }
 
     #[view]
