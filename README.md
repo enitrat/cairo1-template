@@ -5,6 +5,7 @@ Create a repository from this template, clone it locally and run `make install`.
 ## Make commands
 
 - `make install`: Sets up the cairo git submodule
+- `make update`: Updates the cairo submodule
 - `make build`: Builds the cairo 1 compiler
 - `make test dir=<path>`: Runs the tests in a crate
 - `make format`: Formats cairo files under `src/`
