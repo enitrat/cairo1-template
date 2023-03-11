@@ -5,10 +5,10 @@ SOURCE_FOLDER=./src
 last_folder=$(basename $(dirname $(dir)))
 
 install:
-	git submodule init && git submodule update --remote && cp -rf cairo/corelib .
+	git submodule init && git submodule update && cp -rf cairo/corelib .
 
 update:
-	git submodule update --remote && cp -rf cairo/corelib .
+	git submodule update && cp -rf cairo/corelib .
 
 build:
 	cargo build
@@ -24,7 +24,7 @@ check-format:
 
 starknet-compile:
 	mkdir -p out && \
-	  cargo run --bin starknet-compile -- ${dir} out/$(shell basename $(dir)).json
+	  cargo run --bin starknet-compile -- ${dir} out/$(shell basename $(dir)).json --allowed-libfuncs-list-name experimental_v0.1.0
 
 language-server:
 	cargo build --bin cairo-language-server --release
