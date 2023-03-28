@@ -1,12 +1,12 @@
 #[contract]
 mod Vault {
     struct Storage {
-        balance: felt,
-        mapping: LegacyMap::<felt, u256>
+        balance: felt252,
+        mapping: LegacyMap::<felt252, u256>
     }
 
     #[event]
-    fn Update(balances: felt) {}
+    fn Update(balances: felt252) {}
 
     #[constructor]
     fn constructor() {
@@ -15,7 +15,7 @@ mod Vault {
 
 
     #[external]
-    fn increase_balance(amount: felt) {
+    fn increase_balance(amount: felt252) {
         assert(amount != 0, 'Amount must be positive');
         let res = balance::read();
         balance::write(res + amount);
@@ -23,7 +23,7 @@ mod Vault {
     }
 
     #[view]
-    fn get_balance() -> felt {
+    fn get_balance() -> felt252 {
         balance::read()
     }
 }

@@ -4,20 +4,20 @@ Create a repository from this template, clone it locally and run `make install`.
 
 ## Make commands
 
-- `make install`: Sets up the cairo git submodule
-- `make update`: Updates the cairo submodule
-- `make build`: Builds the cairo 1 compiler
-- `make test dir=<path>`: Runs the tests in a crate
-- `make format`: Formats cairo files under `src/`
-- `make check-format`: Checks format for files under `src/`
-- `make starknet-compile dir=<path>`: Runs `starknet-compile` on a cairo crate and stores the output under `out/`
-- `make language-server`: Builds the Cairo 1 Language Server
+-   `make install`: Sets up the cairo git submodule
+-   `make update`: Updates the cairo submodule
+-   `make build`: Builds the cairo 1 compiler
+-   `make test dir=<path>`: Runs the tests in a crate
+-   `make format`: Formats cairo files under `src/`
+-   `make check-format`: Checks format for files under `src/`
+-   `make starknet-compile file=<path>`: Runs `starknet-compile` on a cairo file and stores the output under `out/`
+-   `make language-server`: Builds the Cairo 1 Language Server
 
 ### Example
 
 ```
-make starknet-compile dir=src/erc20
-make starknet-compile dir=src/storage
+make starknet-compile file=src/erc20.cairo
+make starknet-compile file=src/storage.cairo
 ```
 
 ## Language server
