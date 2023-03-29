@@ -13,6 +13,7 @@ update:
 build:
 	cargo build
 
+test: dir = ./tests
 test:
 	cargo run --bin cairo-test -- --starknet --path $(dir)
 
