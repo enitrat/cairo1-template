@@ -2,3 +2,5 @@
 /out
 /.idea
 /corelib
+Cargo.toml
+Cargo.lock
