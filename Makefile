@@ -5,10 +5,10 @@ SOURCE_FOLDER=./src
 last_folder=$(basename $(dirname $(dir)))
 
 install:
-	git submodule init && git submodule update && cp -rf cairo/corelib .
+	git submodule init && git submodule update && cp -rf cairo/corelib . && cp cairo/Cargo.toml .
 
 update:
-	git submodule update && cp -rf cairo/corelib .
+	git submodule update && cp -rf cairo/corelib . && cp cairo/Cargo.toml .
 
 build:
 	cargo build
